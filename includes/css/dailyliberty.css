@@ -237,7 +237,7 @@ div.table_container[data-hide="hide"] .unhide_button {
 .activity_table th {
     font-size: 1.5em;
     vertical-align: top;
-    width: 70%;
+    width: 40%;
     border: none;
 }
 
@@ -249,7 +249,7 @@ div.table_container[data-hide="hide"] .unhide_button {
 .activity_table td.activity_name {
     padding:0;
     height: 100%;
-    width: 70%;
+    width: 40%;
     min-height:69px;
     position: relative;
 }
@@ -404,7 +404,7 @@ div.table_container[data-hide="hide"] .unhide_button {
 .compact .activity_table th,
 .compact .activity_table td.activity_name {
     width: 100%;
-    width: calc(100%-20px);
+    width: calc(100%-60px);
 }
 
 .compact .activity_table td.activity_name {
@@ -500,7 +500,7 @@ footer a img {
 @media (max-width: 767px) {
     .activity_table th,
     .activity_table td.activity_name {
-        width: 50%;
+        width: 60%;
     }
 
     .activity_table a {
@@ -527,14 +527,14 @@ footer a img {
 @media (min-width:768px) {
     .activity_table th,
     .activity_table td.activity_name {
-        width: 60%;
+        width: 33%;
     }
 }
 
 @media (min-width:992px) {
     .activity_table th,
     .activity_table td.activity_name {
-        width: 66%;
+        width: 33%;
     }
 }
 

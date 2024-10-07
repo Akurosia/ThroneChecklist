@@ -19,7 +19,7 @@ const populateTable = function (timeFrame, char) {
     let hideTable;
     let customOrder;
     let compactLayout = document.body.classList.contains('compact');
-		
+
     const sampleRow = document.querySelector('#sample_row');
     if (profilePrefix != null) {
         table = document.getElementById(profilePrefix + '_' + timeFrame + '_table');
@@ -58,9 +58,11 @@ const populateTable = function (timeFrame, char) {
         let rowClone = sampleRow.content.cloneNode(true);
         let newRow = rowClone.querySelector('tr');
         let newRowAnchor = rowClone.querySelector('td.activity_name a');
-        let newRowColor = rowClone.querySelector('td.activity_color .activity_desc');
-        let newRowActColor = rowClone.querySelector('td.activity_color');
-        
+        let newRowColor_de = rowClone.querySelector('td.activity_color_de .activity_desc');
+        let newRowColor_en = rowClone.querySelector('td.activity_color_en .activity_desc');
+        let newRowActColor_de = rowClone.querySelector('td.activity_color_de');
+        let newRowActColor_en = rowClone.querySelector('td.activity_color_en');
+
         newRow.dataset.task = taskSlug;
 
         if (!!data[taskSlug].url) {
@@ -70,7 +72,7 @@ const populateTable = function (timeFrame, char) {
         }
 
         if (!!data[taskSlug].img) {
-            newRowAnchor.innerHTML = "<img class='icon' src='./includes/img/activities/" + data[taskSlug].img + ".webp' alt=" + data[taskSlug].img + "/>" + data[taskSlug].task;
+            newRowAnchor.innerHTML = "<img class='icon' src='./includes/img/activities/" + data[taskSlug].img + ".webp' alt=" + data[taskSlug].img + "/>" + "<span style='display: inline-grid;'>" + data[taskSlug].task + "</span>";
         } else {
             newRowAnchor.innerHTML = data[taskSlug].task
         }
@@ -79,44 +81,65 @@ const populateTable = function (timeFrame, char) {
             newRowAnchor.innerHTML += "<br><br><p class='opencountdown' data-day='"+ data[taskSlug].day + "' data-duration='"+ data[taskSlug].duration + "' data-time='" + data[taskSlug].time + "'></p>"
         }
 
-        if (!!data[taskSlug].desc) {
-			let dust = data[taskSlug].desc.replace("{dust}", "<img class='icon' src='./includes/img/activities/dust.webp' alt=Dust/><b style="+"color:#ff0;"+">Enchanted Dust</b>");
-            let gems = dust.replace("{gems}", "<img class='icon' src='./includes/img/activities/gem.webp' alt=Gems/><b style="+"color:#2bd999;"+">Normal Gems</b>");
-            let ember = gems.replace("{ember}", "<img class='icon' src='./includes/img/activities/ember.webp' alt=Ember/><b style="+"color:#5aabef;"+">Fading Ember</b>");
-			let crest1 = ember.replace("{rare_crest}", "<img class='icon' src='./includes/img/activities/rare_crest.webp' alt=RareCrest/><b style="+"color:#ff0;"+">Rare Crest</b>");
-            let crest2 = crest1.replace("{leg_crest}", "<img class='icon' src='./includes/img/activities/leg_crest.webp' alt=LegendaryCrest/><b style="+"color:#bf642f;"+">Legendary Crest</b>");
-            let contract = crest2.replace("{contract}", "<img class='icon' src='./includes/img/activities/contract.webp' alt=contract/><b style="+"color:#bf642f;"+">Contract</b>");
-            let dimensional_points = contract.replace("{dimensional_points}", "<img class='icon' src='./includes/img/activities/dimensional_points.webp' alt=dimensional_points/><b style="+"color:#bf642f;"+">Dimensional Points</b>");
-            let abyssal_contract_tokens = dimensional_points.replace("{abyssal_contract_tokens}", "<img class='icon' src='./includes/img/activities/abyssal_contract_tokens.webp' alt=abyssal_contract_tokens/><b style="+"color:#bf642f;"+">Abyssal Contract Tokens</b>");
+        if (!!data[taskSlug].desc_de) {
+			let de_dust = data[taskSlug].desc_de.replace("{dust}", "<img class='icon' src='./includes/img/activities/dust.webp' alt=Dust/><b style="+"color:#ff0;"+">Enchanted Dust</b>");
+            let de_gems = de_dust.replace("{gems}", "<img class='icon' src='./includes/img/activities/gem.webp' alt=Gems/><b style="+"color:#2bd999;"+">Normal Gems</b>");
+            let de_ember = de_gems.replace("{ember}", "<img class='icon' src='./includes/img/activities/ember.webp' alt=Ember/><b style="+"color:#5aabef;"+">Fading Ember</b>");
+			let de_crest1 = de_ember.replace("{rare_crest}", "<img class='icon' src='./includes/img/activities/rare_crest.webp' alt=RareCrest/><b style="+"color:#ff0;"+">Rare Crest</b>");
+            let de_crest2 = de_crest1.replace("{leg_crest}", "<img class='icon' src='./includes/img/activities/leg_crest.webp' alt=LegendaryCrest/><b style="+"color:#bf642f;"+">Legendary Crest</b>");
+            let de_contract = de_crest2.replace("{contract}", "<img class='icon' src='./includes/img/activities/contract.webp' alt=contract/><b style="+"color:#bf642f;"+">Vertragsverwalter </b>");
+            let de_dimensional_points = de_contract.replace("{dimensional_points}", "<img class='icon' src='./includes/img/activities/dimensional_points.webp' alt=dimensional_points/><b style="+"color:#bf642f;"+">Dimensionsvertrag-Marken </b>");
+            let de_abyssal_contract_tokens = de_dimensional_points.replace("{abyssal_contract_tokens}", "<img class='icon' src='./includes/img/activities/abyssal_contract_tokens.webp' alt=abyssal_contract_tokens/><b style="+"color:#bf642f;"+">Abgrundvertrag-Marken </b>");
+            let de_blessing_pouch = de_abyssal_contract_tokens.replace("{blessing_pouch}", "<img class='icon' src='./includes/img/activities/blessing_pouch.webp' alt=blessing_pouch/><b style="+"color:#bf642f;"+">Edle Segenstasche </b>");
 
-			newRowColor.innerHTML = abyssal_contract_tokens;
+            let de_contract_coin = de_blessing_pouch.replace("{contract_coin}", "<img class='icon' src='./includes/img/activities/contract_coin.webp' alt=contract_coin/><b style="+"color:#bf642f;"+">Vertragsmünzenhändler </b>");
+            let de_guild_coin = de_contract_coin.replace("{guild_coin}", "<img class='icon' src='./includes/img/activities/guild_coin.webp' alt=guild_coin/><b style="+"color:#bf642f;"+">Gildenhändler </b>");
+            let de_battle_pass = de_guild_coin.replace("{battle_pass}", "<img class='icon' src='./includes/img/activities/battle_pass.webp' alt=battle_pass/><b style="+"color:#bf642f;"+">Kampfpass </b>");
+            let de_sundries_merchant = de_battle_pass.replace("{sundries_merchant}", "<img class='icon' src='./includes/img/activities/sundries_merchant.webp' alt=sundries_merchant/><b style="+"color:#bf642f;"+">Gemischtwarenhändler </b>");
+			newRowColor_de.innerHTML = de_sundries_merchant;
         }
-        
+
+        if (!!data[taskSlug].desc_en) {
+			let en_dust = data[taskSlug].desc_en.replace("{dust}", "<img class='icon' src='./includes/img/activities/dust.webp' alt=Dust/><b style="+"color:#ff0;"+">Enchanted Dust</b>");
+            let en_gems = en_dust.replace("{gems}", "<img class='icon' src='./includes/img/activities/gem.webp' alt=Gems/><b style="+"color:#2bd999;"+">Normal Gems</b>");
+            let en_ember = en_gems.replace("{ember}", "<img class='icon' src='./includes/img/activities/ember.webp' alt=Ember/><b style="+"color:#5aabef;"+">Fading Ember</b>");
+			let en_crest1 = en_ember.replace("{rare_crest}", "<img class='icon' src='./includes/img/activities/rare_crest.webp' alt=RareCrest/><b style="+"color:#ff0;"+">Rare Crest</b>");
+            let en_crest2 = en_crest1.replace("{leg_crest}", "<img class='icon' src='./includes/img/activities/leg_crest.webp' alt=LegendaryCrest/><b style="+"color:#bf642f;"+">Legendary Crest</b>");
+            let en_contract = en_crest2.replace("{contract}", "<img class='icon' src='./includes/img/activities/contract.webp' alt=contract/><b style="+"color:#bf642f;"+">Contracts </b>");
+            let en_dimensional_points = en_contract.replace("{dimensional_points}", "<img class='icon' src='./includes/img/activities/dimensional_points.webp' alt=dimensional_points/><b style="+"color:#bf642f;"+">Dimensional Points </b>");
+            let en_abyssal_contract_tokens = en_dimensional_points.replace("{abyssal_contract_tokens}", "<img class='icon' src='./includes/img/activities/abyssal_contract_tokens.webp' alt=abyssal_contract_tokens/><b style="+"color:#bf642f;"+">Abyssal Contract Tokens </b>");
+            let en_blessing_pouch = en_abyssal_contract_tokens.replace("{blessing_pouch}", "<img class='icon' src='./includes/img/activities/blessing_pouch.webp' alt=blessing_pouch/><b style="+"color:#bf642f;"+">Precious Blessing Pouch </b>");
+
+            let en_contract_coin = en_blessing_pouch.replace("{contract_coin}", "<img class='icon' src='./includes/img/activities/contract_coin.webp' alt=contract_coin/><b style="+"color:#bf642f;"+">Contract Manager </b>");
+            let en_guild_coin = en_contract_coin.replace("{guild_coin}", "<img class='icon' src='./includes/img/activities/guild_coin.webp' alt=guild_coin/><b style="+"color:#bf642f;"+">Guild Merchant </b>");
+            let en_battle_pass = en_guild_coin.replace("{battle_pass}", "<img class='icon' src='./includes/img/activities/battle_pass.webp' alt=battle_pass/><b style="+"color:#bf642f;"+">Battle Pass </b>");
+            let en_sundries_merchant = en_battle_pass.replace("{sundries_merchant}", "<img class='icon' src='./includes/img/activities/sundries_merchant.webp' alt=sundries_merchant/><b style="+"color:#bf642f;"+">Sundries Merchant </b>");
+			newRowColor_en.innerHTML = en_sundries_merchant;
+        }
+
         let checkState = true;
         if (!!data[taskSlug].boxcount) {
             if (!compactLayout) {
-                newRowActColor.innerHTML += "<br>";
+                newRowActColor_en.innerHTML += "<br>";
+                newRowActColor_de.innerHTML += "<br>";
             }
             for (let i = 0; i < data[taskSlug].boxcount; i++) {
-
                 if (compactLayout) {
                     if (i == 0) {
-                        newRowActColor.innerHTML += "<input class=\"form-check-input\" type=\"checkbox\" value=\"\" name=\"" + i + "\" id=\"checkbox_" + data[taskSlug].task.replaceAll(" ", "") + "\">"
+                        newRowActColor_en.innerHTML += "<input class=\"form-check-input\" type=\"checkbox\" value=\"\" name=\"" + i + "\" id=\"checkbox_" + data[taskSlug].task.replaceAll(" ", "") + "\">"
+                        newRowActColor_de.innerHTML += "<input class=\"form-check-input\" type=\"checkbox\" value=\"\" name=\"" + i + "\" id=\"checkbox_" + data[taskSlug].task.replaceAll(" ", "") + "\">"
                     }
-
                     if (storage.getItem("checkbox_"+data[taskSlug].task.replaceAll(" ", "")+i)===null) {
                         storage.setItem("checkbox_"+data[taskSlug].task.replaceAll(" ", "")+i, false);
                     }
-
                     checkState = false;
                 }
                 else {
-                    newRowActColor.innerHTML += "<input class=\"form-check-input\" type=\"checkbox\" value=\"\" name=\"" + i + "\" id=\"checkbox_" + data[taskSlug].task.replaceAll(" ", "") + "\">"
-                   
+                    newRowActColor_en.innerHTML += "<input class=\"form-check-input\" type=\"checkbox\" value=\"\" name=\"" + i + "\" id=\"checkbox_" + data[taskSlug].task.replaceAll(" ", "") + "\">"
+                    newRowActColor_de.innerHTML += "<input class=\"form-check-input\" type=\"checkbox\" value=\"\" name=\"" + i + "\" id=\"checkbox_" + data[taskSlug].task.replaceAll(" ", "") + "\">"
                     if (storage.getItem("checkbox_"+data[taskSlug].task.replaceAll(" ", "")+i)===null) {
                         storage.setItem("checkbox_"+data[taskSlug].task.replaceAll(" ", "")+i, false);
                     }
-
                     if(storage.getItem("checkbox_"+data[taskSlug].task.replaceAll(" ", "")+i) === 'false'){
                         checkState = false;
                     }
@@ -127,8 +150,8 @@ const populateTable = function (timeFrame, char) {
         if (hidden === 'hide'){
             checkState = hidden;
         }
-        
-        tbody.appendChild(newRow);        
+        console.log(newRow)
+        tbody.appendChild(newRow);
         newRow.dataset.completed = checkState;
     }
 
@@ -137,7 +160,7 @@ const populateTable = function (timeFrame, char) {
     for (let box of checkBoxes) {
         box.checked = (storage.getItem(box.id + box.name) === 'true') ? true : false;
     }
-    
+
     if (['asc', 'desc', 'alpha'].includes(customOrder)) {
         table.dataset.sort = customOrder;
         let tableRows = Array.from(tbody.querySelectorAll('tr'));
@@ -155,12 +178,12 @@ const populateTable = function (timeFrame, char) {
             tbody.appendChild(sortedrow);
         }
     }
-	
+
 	let tableRowsFront = document.querySelectorAll('#' + timeFrame + '_table tbody tr');
 	for (let rowTarget of tableRowsFront) {
 		let checked = true;
 		let checkboxes = rowTarget.querySelectorAll('input.form-check-input')
-				
+
 		if(compactLayout){
 			checked = checkboxes[0].checked;
 		} else {
@@ -189,40 +212,40 @@ const tableEventListeners = function () {
     let rowsHide = document.querySelectorAll('td.activity_name button.hide-button');
     let checkBoxes = document.querySelectorAll('input.form-check-input');
     let compactLayout = document.body.classList.contains('compact');
-    
+
     for (let box of checkBoxes) {
         box.addEventListener('click', function () {
             let thisTimeframe = this.closest('table').dataset.timeframe;
             let thisCharacter = this.closest('table').dataset.character;
-            
+
             //check if entire group is checked
             let checkBoxGroup = document.querySelectorAll("[id^=" + box.id + "]");
-            
+
             let checked = true;
             for (let group of checkBoxGroup) {
                 if (!group.checked){
                     checked = false;
                 }
             }
-            
+
             //check task
             let thisRow = this.closest('tr');
             if (!compactLayout) {
                 thisRow.dataset.completed = checked;
             }
-			
+
 			//move row to bottom
 			if(checked) {
 				let rowArray = Array.from(document.querySelectorAll('#' + thisTimeframe + '_table tbody tr'));
 				rowArray[rowArray.length-1].after(thisRow);
 			}
-            
+
             //save state
             storage.setItem(box.id + box.name, box.checked);
             storage.setItem(thisTimeframe + '-updated', new Date().getTime());
         });
     }
-    
+
     for (let colorCell of rowsColor) {
         let descriptionAnchors = colorCell.querySelectorAll('a');
         for (let anchor of descriptionAnchors) {
@@ -283,7 +306,7 @@ const draggableTable = function (timeFrame, char) {
             } else {
                 rowArray = Array.from(document.querySelectorAll('#' + timeFrame + '_table tbody tr'));
             }
-            
+
             let dragOverRow = e.target.closest('tr');
 
             if (rowArray.indexOf(dragRow) < rowArray.indexOf(dragOverRow)) {
@@ -348,11 +371,11 @@ const resetTable = function (timeFrame, html, char) {
     profilePrefix = char;
     let tableRows = document.querySelectorAll('#' + timeFrame + '_table tbody tr input');
 	let tableRowsFront = document.querySelectorAll('#' + timeFrame + '_table tbody tr');
- 
+
 	for (let rowTarget of tableRowsFront) {
 		rowTarget.dataset.completed = false;
     }
-	
+
     for (let rowTarget of tableRows) {
         rowTarget.checked =false;
         storage.setItem(rowTarget.id + rowTarget.name, false);
@@ -383,7 +406,7 @@ const resettableSection = function (timeFrame, char) {
                 storage.removeItem(taskSlug);
             }
         }
-        
+
         let thisCharacter = this.closest('table').dataset.character;
         resetTable(timeFrame, false, thisCharacter);
         eventTracking("reset", "layout", timeFrame + '-order');
@@ -463,7 +486,7 @@ const updateTimeContent = function(){
                 continue;
             }
         }
-        
+
         for (openTime of splittedId){
             let startTime = new Date();
             startTime.setHours(openTime);
@@ -526,13 +549,13 @@ const checkReset = function (timeFrame, char) {
     } else {
         tableUpdateTime = storage.getItem(timeFrame + '-updated') ?? 'false';
     }
-    
+
     updateTimeContent();
 
     if (tableUpdateTime === 'false') {
         return false;
     }
-    
+
     let updateTime = new Date(parseInt(tableUpdateTime));
 
     let nextdate = new Date();
@@ -548,8 +571,8 @@ const checkReset = function (timeFrame, char) {
         nextdate.setUTCDate(1);
     }
 
-    // Checking for the update for the daily timeframe is a little more complex because 
-    // originally we pulled this from RS, this expects that if the new day has happened 
+    // Checking for the update for the daily timeframe is a little more complex because
+    // originally we pulled this from RS, this expects that if the new day has happened
     // its reset time, but we need to allow some freedom between 0 - 10am UTC (resetTime).
     const isAfterReset = new Date().getUTCHours() >= resetHour;
     const isAfterWeeklyReset = new Date().getUTCDay() >= resetday;
@@ -597,14 +620,14 @@ const countDown = function (timeFrame) {
         nextdate.setUTCHours(resetHour);
         nextdate.setUTCMinutes(0);
         nextdate.setUTCSeconds(0);
-        
+
         if (isAfterDailyReset) {
             let day = 1;
             if (resetHour < 0){
                 day = 2;//OC / Asia
             }
             nextdate.setUTCDate(nextdate.getUTCDate() + day);
-            
+
             let now = new Date();
             let timeCheck = (nextdate.getTime() - now.getTime()) / 1000;
             if (Math.floor(timeCheck / 86400) > 0){
@@ -621,7 +644,7 @@ const countDown = function (timeFrame) {
         Math.floor(remainingtime % 3600 / 60), //m
         Math.floor(remainingtime % 60) //s
     ];
-	
+
 	if (timeFrame == 'dailydrops'){
         document.getElementById('th-countdown-' + timeFrame).innerHTML = (timeparts[0] > 0 ? (timeparts[0] + 'd ') : '') + (timeparts[1] > 0 ? (timeparts[1] + 'h ') : '') + timeparts[2] + 'm ' + timeparts[3] + 's';
     }
@@ -633,8 +656,8 @@ const countDown = function (timeFrame) {
     if (timeFrame == 'weeklies' || timeFrame == 'monthlies') {
         document.getElementById('countdown-' + timeFrame).innerHTML = (timeparts[0] > 0 ? (timeparts[0] + 'd ') : '0d ') + (timeparts[1] > 0 ? (timeparts[1] + 'h ') : '') + timeparts[2] + 'm ' + timeparts[3] + 's';
         document.getElementById('th-countdown-' + timeFrame).innerHTML = (timeparts[0] > 0 ? (timeparts[0] + 'd ') : '0d ') + (timeparts[1] > 0 ? (timeparts[1] + 'h ') : '') + timeparts[2] + 'm ' + timeparts[3] + 's';
-    } 
-    
+    }
+
     if (timeFrame == 'dailies') {
         document.getElementById('countdown-' + timeFrame).innerHTML = (timeparts[0] > 0 ? (timeparts[0] + 'd ') : '') + (timeparts[1] > 0 ? (timeparts[1] + 'h ') : '') + timeparts[2] + 'm ' + timeparts[3] + 's';
         document.getElementById('th-countdown-' + timeFrame).innerHTML = (timeparts[0] > 0 ? (timeparts[0] + 'd ') : '') + (timeparts[1] > 0 ? (timeparts[1] + 'h ') : '') + timeparts[2] + 'm ' + timeparts[3] + 's';
@@ -753,7 +776,7 @@ window.onload = function () {
 	 } else {
 		 localStorage.setItem('timezone', 10);
 	 }
-	
+
 	timezone.addEventListener('change', function (e) {
 		localStorage.setItem('timezone', timezone.value);
     });
@@ -795,6 +818,6 @@ window.onload = function () {
             checkReset(timeFrame);
             countDown(timeFrame);
         }
-       
+
     }, 1000);
 };

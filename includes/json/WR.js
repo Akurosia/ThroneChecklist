@@ -3,7 +3,8 @@ var weeklies = {
         task: "World Events Participation",
         url: "#",
         short: true,
-        desc: "Participate in Dynamic Events, World Bosses, and Castle Siege events.",
+        desc_en: "Participate in Dynamic Events, World Bosses, and Castle Siege events.",
+        desc_de: "Nimm an dynamischen Events, Weltbossen und Burgbelagerungen tei",
         img: "placeholder",
         boxcount: 1
     },
@@ -11,7 +12,8 @@ var weeklies = {
         task: "3v3 Arena PvP",
         url: "#",
         short: true,
-        desc: "Engage in 3v3 Instanced Arena PvP matches.",
+        desc_en: "Engage in 3v3 Instanced Arena PvP matches.",
+        desc_de: "Nehmt an 3v3-Instanz-Arena-PvP-Kämpfen teil.",
         img: "placeholder",
         boxcount: 1
     },
@@ -19,7 +21,8 @@ var weeklies = {
         task: "Guild Boss Fights",
         url: "#",
         short: true,
-        desc: "Participate in Weekly Guild Bosses as scheduled by your guild.",
+        desc_en: "Participate in Weekly Guild Bosses as scheduled by your guild.",
+        desc_de: "Nehmt an den wöchentlichen Gildenbossen teil, wie von eurer Gilde geplant.",
         img: "placeholder",
         boxcount: 1
     },
@@ -27,7 +30,8 @@ var weeklies = {
         task: "Complete Sidequests",
         url: "#",
         short: true,
-        desc: "Finish up sidequests and lore codex entries.",
+        desc_en: "Finish up sidequests and lore codex entries.",
+        desc_de: "Schließe Nebenquests und Kodexeinträge ab.",
         img: "placeholder",
         boxcount: 1
     },
@@ -35,7 +39,8 @@ var weeklies = {
         task: "Send Amitoi on Expeditions",
         url: "#",
         short: true,
-        desc: "Send your Amitoi on expeditions for loot (return after 1/2/4/8 hours).",
+        desc_en: "Send your Amitoi on expeditions for loot (return after 1/2/4/8 hours).",
+        desc_de: "Schicken Sie Ihre Amitoi auf Expeditionen für Beute (Rückkehr nach 1/2/4/8 Stunden).",
         img: "placeholder",
         boxcount: 1
     },
@@ -43,7 +48,8 @@ var weeklies = {
         task: "Farming Open World Mobs",
         url: "#",
         short: true,
-        desc: "Farm mobs for cooking ingredients or low drop rate equipment.",
+        desc_en: "Farm mobs for cooking ingredients or low drop rate equipment.",
+        desc_de: "Farmt Mobs für Kochzutaten oder Ausrüstung mit niedriger Drop-Rate.",
         img: "placeholder",
         boxcount: 1
     },
@@ -51,7 +57,8 @@ var weeklies = {
         task: "Fishing for Ingredients",
         url: "#",
         short: true,
-        desc: "Fish for cooking ingredients and arch boss weapon materials.",
+        desc_en: "Fish for cooking ingredients and arch boss weapon materials.",
+        desc_de: "Fischen Sie nach Kochzutaten und Materialien für Erzbosswaffen.",
         img: "placeholder",
         boxcount: 1
     },
@@ -59,7 +66,8 @@ var weeklies = {
         task: "Cooking to Increase Level",
         url: "#",
         short: true,
-        desc: "Cook to increase cooking level and sell for profit.",
+        desc_en: "Cook to increase cooking level and sell for profit.",
+        desc_de: "Kochen, um die Kochstufe zu erhöhen und mit Gewinn zu verkaufen",
         img: "placeholder",
         boxcount: 1
     },
@@ -67,7 +75,8 @@ var weeklies = {
         task: "Assist Friends and Guildies",
         url: "#",
         short: true,
-        desc: "Help friends and guildies with dungeons, even without stamina.",
+        desc_en: "Help friends and guildies with dungeons, even without stamina.",
+        desc_de: "Freunden und Gilden bei Dungeons helfen, auch ohne Ausdauer",
         img: "placeholder",
         boxcount: 1
     },
