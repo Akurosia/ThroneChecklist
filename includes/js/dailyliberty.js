@@ -120,14 +120,22 @@ const populateTable = function (timeFrame, char) {
         let checkState = true;
         if (!!data[taskSlug].boxcount) {
             if (!compactLayout) {
-                newRowActColor_en.innerHTML += "<br>";
-                newRowActColor_de.innerHTML += "<br>";
+                if (!!data[taskSlug].desc_en) {
+                    newRowActColor_en.innerHTML += "<br>";
+                }
+                if (!!data[taskSlug].desc_de) {
+                    newRowActColor_de.innerHTML += "<br>";
+                }
             }
             for (let i = 0; i < data[taskSlug].boxcount; i++) {
                 if (compactLayout) {
                     if (i == 0) {
-                        newRowActColor_en.innerHTML += "<input class=\"form-check-input\" type=\"checkbox\" value=\"\" name=\"" + i + "\" id=\"checkbox_" + data[taskSlug].task.replaceAll(" ", "") + "\">"
-                        newRowActColor_de.innerHTML += "<input class=\"form-check-input\" type=\"checkbox\" value=\"\" name=\"" + i + "\" id=\"checkbox_" + data[taskSlug].task.replaceAll(" ", "") + "\">"
+                        if (!!data[taskSlug].desc_en) {
+                            newRowActColor_en.innerHTML += "<input class=\"form-check-input\" type=\"checkbox\" value=\"\" name=\"" + i + "\" id=\"checkbox_" + data[taskSlug].task.replaceAll(" ", "") + "\">"
+                        }
+                        if (!!data[taskSlug].desc_de) {
+                            newRowActColor_de.innerHTML += "<input class=\"form-check-input\" type=\"checkbox\" value=\"\" name=\"" + i + "\" id=\"checkbox_" + data[taskSlug].task.replaceAll(" ", "") + "\">"
+                        }
                     }
                     if (storage.getItem("checkbox_"+data[taskSlug].task.replaceAll(" ", "")+i)===null) {
                         storage.setItem("checkbox_"+data[taskSlug].task.replaceAll(" ", "")+i, false);
@@ -135,8 +143,12 @@ const populateTable = function (timeFrame, char) {
                     checkState = false;
                 }
                 else {
-                    newRowActColor_en.innerHTML += "<input class=\"form-check-input\" type=\"checkbox\" value=\"\" name=\"" + i + "\" id=\"checkbox_" + data[taskSlug].task.replaceAll(" ", "") + "\">"
-                    newRowActColor_de.innerHTML += "<input class=\"form-check-input\" type=\"checkbox\" value=\"\" name=\"" + i + "\" id=\"checkbox_" + data[taskSlug].task.replaceAll(" ", "") + "\">"
+                    if (!!data[taskSlug].desc_en) {
+                        newRowActColor_en.innerHTML += "<input class=\"form-check-input\" type=\"checkbox\" value=\"\" name=\"" + i + "\" id=\"checkbox_" + data[taskSlug].task.replaceAll(" ", "") + "\">"
+                    }
+                    if (!!data[taskSlug].desc_de) {
+                        newRowActColor_de.innerHTML += "<input class=\"form-check-input\" type=\"checkbox\" value=\"\" name=\"" + i + "\" id=\"checkbox_" + data[taskSlug].task.replaceAll(" ", "") + "\">"
+                    }
                     if (storage.getItem("checkbox_"+data[taskSlug].task.replaceAll(" ", "")+i)===null) {
                         storage.setItem("checkbox_"+data[taskSlug].task.replaceAll(" ", "")+i, false);
                     }
