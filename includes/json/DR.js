@@ -13,7 +13,7 @@ var dailies = {
         url: "#",
         short: true,
         desc_en: "Use your daily 900 {dimensional_points}; don't overcap or you lose it.",
-        desc_de: "Verwenden Sie Ihre täglichen 900 {dimensional_points}; überschreiten Sie nicht die Obergrenze, sonst sind sie verschwendet.",
+        desc_de: "Verwenden Sie Ihre täglichen 900 {dimensional_points} (3 Koop Dungeons). Limit bei 4500.",
         img: "dimensional_points",
         boxcount: 1
     },
@@ -22,7 +22,7 @@ var dailies = {
         url: "#",
         short: true,
         desc_en: "Use {abyssal_contract_tokens} from previous activities; cap at 20,000.",
-        desc_de: "Verwende {abyssal_contract_tokens} aus früheren Aktivitäten; Cap bei 20.000.",
+        desc_de: "Verwende {abyssal_contract_tokens} in Overworld Dungeons aus früheren Aktivitäten. Limit bei 20.000.",
         img: "abyssal_contract_tokens",
         boxcount: 1
     },
@@ -68,7 +68,7 @@ var dailies = {
         short: true,
         desc_en: "Complete all {battle_pass} progression activities.",
         desc_de: "Schließe alle {battle_pass} Fortschrittsaktivitäten ab.",
-        img: "placeholder",
+        img: "battle_pass",
         boxcount: 1
     },
 };
